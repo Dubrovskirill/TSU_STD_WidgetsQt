@@ -1,15 +1,16 @@
+
+#include <QLayout>
+
 #include "win.h"
-#include "ui_win.h"
 
-win::win(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::win)
-{
-    ui->setupUi(this);
+Win::Win() {
+    setWindowTitle("Обработка событий");
+
+    area = new Area(this);
+    btn = new QPushButton("Завершить", this);
+
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    layout->addWidget(area);
+    layout->addWidget(btn);
+    connect(btn, &QPushButton::clicked, this, &QWidget::close);
 }
-
-win::~win()
-{
-    delete ui;
-}
-
